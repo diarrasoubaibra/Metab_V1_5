@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block static_link %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock static_link %}
+
+{% block rapport_active %}active{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="form-container">
+            <h1>Impression Rapport</h1>
+
+            <div class="form-group">
+                <label for="report_type">Sélectionner un type de rapport</label>
+                <select id="report_type" name="report_type">
+                    <option value="users">Utilisateurs</option>
+                    <option value="teachers">Professeurs</option>
+                    <option value="students">Élèves</option>
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button class="btn-cancel" onclick="generatePDF()">Générer format PDF</button>
+                <button class="btn-save" onclick="generateExcel()">Générer format Excel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generatePDF() {
+            const reportType = document.getElementById('report_type').value;
+            window.location.href = `/report/pdf/${reportType}/`;
+        }
+
+        function generateExcel() {
+            const reportType = document.getElementById('report_type').value;
+            window.location.href = `/report/excel/${reportType}/`;
+        }
+    </script>
+{% endblock %}

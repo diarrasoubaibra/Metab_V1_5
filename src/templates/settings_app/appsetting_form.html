@@ -1,0 +1,9 @@
+<!-- templates/settings_app/appsetting_form.html -->
+
+<h1>{% if object %}Modifier Paramètre{% else %}Ajouter Paramètre{% endif %}</h1>
+<form method="post">
+  {% csrf_token %} {{ appsetting_form.as_p }}
+  <button type="submit">Enregistrer</button>
+</form>
+<a href="{% url 'school:sett_list' %}">Annuler</a>
+

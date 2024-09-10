@@ -1,0 +1,6 @@
+<!-- templates/schools/school_detail.html -->
+{% extends "base.html" %} {% block content %}
+<h1>Détails de l'École : {{ school.name }}</h1>
+<img src="{{ school.url_logo }}" alt="Logo de l'école" />
+<a href="{% url 'school:list' %}">Retour à la liste</a>
+{% endblock content %}

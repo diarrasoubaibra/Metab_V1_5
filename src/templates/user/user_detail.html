@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+<!-- templates/users/user_detail.html -->
+{% block content %}
+<h1>Détails de l'Utilisateur : {{ object.pseudo }}</h1>
+<p>Role: {{ object.role.role }}</p>
+<p>Date de création: {{ object.creation_date }}</p>
+<a href="{% url 'user_list' %}">Retour à la liste</a>
+{% endblock content %}

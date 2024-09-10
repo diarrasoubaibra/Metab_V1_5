@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+<!-- templates/users/user_form.html -->
+{% block content %}
+<h1>{% if role %}Modifier Role{% else %}Ajouter Role{% endif %}</h1>
+<form method="post">
+  {% csrf_token %} {{ form1.as_p }}
+  <button type="submit">Enregistrer</button>
+</form>
+<a href="{% url 'user:list_role' %}">Annuler</a>
+{% endblock content %}

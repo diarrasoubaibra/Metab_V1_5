@@ -1,0 +1,15 @@
+<!-- templates/students/student_confirm_delete.html -->
+{% extends "base.html" %}
+{% block content %}
+<h1>Supprimer Étudiant</h1>
+<p>
+  Voulez-vous vraiment supprimer {{ student.first_name }} {{ student.last_name }}
+  ?
+</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Confirmer</button>
+</form>
+<a href="{% url 'student:list' %}">Annuler</a>
+{% endblock content %}
+

@@ -1,0 +1,11 @@
+<!-- templates/teachers/teacher_form.html -->
+{% extends "base.html" %} {% block content %}
+<h1>
+  {% if object %}Modifier Enseignant{% else %}Ajouter Enseignant{% endif %}
+</h1>
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Enregistrer</button>
+</form>
+<a href="{% url 'teacher:list' %}">Annuler</a>
+{% endblock content %}

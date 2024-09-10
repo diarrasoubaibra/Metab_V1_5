@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Etab - Connexion</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body style="background-color: #555;">
+    <div class="container">
+        <div class="login-box">
+            <div class="logo">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" />
+                <h1>Mon Etab</h1>
+            </div>
+            <form method="POST" action="{% url 'user:login' %}">
+                {% csrf_token %}
+                {% if error %}
+                <div class="error-message" style="color: red; margin-bottom: 15px;">
+                    {{ error }}
+                </div>
+                {% endif %}
+                <div class="input-group">
+                    <label for="pseudo">Identifiant</label>
+                    <input type="text" id="pseudo" name="pseudo" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="login-btn">Connexion</button>
+            </form>
+            
+        </div>
+    </div>
+</body>
+
+</html>

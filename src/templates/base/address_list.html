@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>Liste des adresses</h1>
+  <a href="{% url 'address:add' %}" class="btn btn-primary">Ajouter une adresse</a>
+</div>
+
+<ul class="list-group">
+  {% for user in object_list %}
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <div>
+      <a href="{% url 'address_detail' user.id %}">{{ user.city }}</a> - {{ user.street }}
+    </div>
+    <div>
+      <a href="{% url 'address_edit' user.id %}" class="btn btn-sm btn-warning">Modifier</a>
+      <a href="{% url 'address_delete' user.id %}" class="btn btn-sm btn-danger">Supprimer</a>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock content %}

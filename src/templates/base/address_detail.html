@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+<!-- templates/users/user_detail.html -->
+{% block content %}
+<h1>Détails de l'adresse : {{ object.city }}</h1>
+<p>Street: {{ object.street }}</p>
+<p>country: {{ object.country }}</p>
+<a href="{% url 'address_list' %}">Retour à la liste</a>
+{% endblock content %}

@@ -1,0 +1,14 @@
+<!-- templates/teachers/teacher_confirm_delete.html -->
+{% extends "base.html" %} {% block content %}
+<h1>Supprimer Enseignant</h1>
+<p>
+  Voulez-vous vraiment supprimer {{ teacher.first_name }} {{ teacher.last_name }}
+  ?
+</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Confirmer</button>
+</form>
+<a href="{% url 'teacher:list' %}">Annuler</a>
+
+{% endblock content %}

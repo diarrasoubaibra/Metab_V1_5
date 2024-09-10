@@ -1,0 +1,7 @@
+<!-- templates/settings_app/appsetting_detail.html -->
+{% extends "base.html" %} {% block content %}
+<h1>Détails du Paramètre : SMTP {{ appsetting.smtp_server }}</h1>
+<p>Port: {{ appsetting.smtp_port }}</p>
+<p>Utilisateur: {{ appsetting.smtp_username }}</p>
+<a href="{% url 'school:sett_list' %}">Retour à la liste</a>
+{% endblock content %}

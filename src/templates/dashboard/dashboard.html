@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block static_link %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock static_link %}
+
+{% block title %}Tableau de bord{% endblock %}
+
+{% block dashboard_active %}active{% endblock %}
+
+{% block content %}
+
+<div class="back-button" style="justify-content: flex-start;" >
+    <h1 style="color:black;">Tableau de bord</h1>
+</div>
+<div class="card-container">
+    <div class="card">Nombre d'élèves<br>128 100</div>
+    <div class="card">Nombre de professeurs<br>128 100</div>
+    <div class="card">Nombre d'utilisateurs<br>{{user_count}}</div>
+    <div class="card">
+        <canvas id="pie-chart"></canvas>
+    </div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/script.js' %}"></script>
+
+{% endblock %}

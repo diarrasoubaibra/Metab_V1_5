@@ -1,0 +1,9 @@
+<!-- templates/teachers/teacher_detail.html -->
+{% extends "base.html" %} {% block content %}
+<h1>
+  Détails de l'Enseignant : {{ object.first_name }} {{ object.last_name }}
+</h1>
+<p>Spécialité: {{ object.specialty }}</p>
+<p>Disponible: {{ object.available }}</p>
+<a href="{% url 'teacher_list' %}">Retour à la liste</a>
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>Paramètre de l'Application</h1>
+  
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>SMTP Server</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for setting in appsettings %}
+      <tr>
+        <td>
+          <a href="{% url 'school:setting_details' setting.id %}">{{ setting.smtp_server }}</a>
+        </td>
+        <td>
+          <a href="{% url 'school:edit_setting' setting.id %}" class="btn btn-sm btn-warning">Modifier</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock content %}

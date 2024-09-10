@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+      <!-- Main Content -->
+      <div class="flex-1 p-6">
+        <a
+          href="{% url 'student:list_abs' %}"
+          class="text-gray-500 hover:text-gray-700 flex items-center mb-6"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 mr-2"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+          Retour
+        </a>
+        <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+          <h1 class="text-2xl font-semibold mb-6 text-center">
+            {{title}}
+          </h1>
+          <form action="" method="POST" class="grid grid-cols-2 gap-6">
+            <!-- Champ Nom -->
+            {% csrf_token %}
+
+             {{formA}}
+            <!-- Boutons -->
+            <div class="col-span-2 flex justify-center space-x-4">
+              <button
+                type="reset"
+                class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+              >
+                Annuler
+              </button>
+              <button
+                type="submit"
+                class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+              >
+                Enregistrer
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+{% endblock content %}

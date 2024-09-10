@@ -1,0 +1,10 @@
+<!-- templates/schools/school_form.html -->
+
+<h1>{% if school_form.instance.pk %}Modifier École{% else %}Ajouter École{% endif %}</h1>
+<form method="post">
+  {% csrf_token %} {{ school_form.as_p }}
+  <button type="submit">Enregistrer</button>
+</form>
+<a href="{% url 'school:list' %}">Annuler</a>
+
+

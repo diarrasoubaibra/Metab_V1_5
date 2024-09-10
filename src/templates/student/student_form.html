@@ -1,0 +1,9 @@
+<!-- templates/students/student_form.html -->
+{% extends "base.html" %} {% block content %}
+<h1>{% if student %}Modifier Étudiant{% else %}Ajouter Étudiant{% endif %}</h1>
+<form method="post">
+  {% csrf_token %} {{ student_form.as_p }}
+  <button type="submit">Enregistrer</button>
+</form>
+<a href="{% url 'student:list' %}">Annuler</a>
+{% endblock content %}

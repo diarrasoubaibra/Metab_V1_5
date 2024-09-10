@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bloc</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+ {% block static_link %}{% endblock static_link %}
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .sidebar {
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      background-color: #f8f9fa;
+      padding-top: 20px;
+      border-right: 1px solid #dee2e6;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #333;
+      padding: 10px 15px;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2 class="text-center">Menu</h2>
+    <div class="user-info text-center">
+      <p><strong>Utilisateur :</strong> {{ user.pseudo }}</p>
+      <p><strong>École :</strong> {{ school.name }}</p>
+    </div>
+    <a href="{% url 'dashboard:dashboard' %}">Tableau de bord</a>
+    <a href="{% url 'school:edit_setting' setting.id=1  %}">Paramètres</a>
+    <a href="{% url 'school:edit' school.id=1 %}">Ecoles</a>
+    <a href="{% url 'user:list_role' %}">Rôles</a>
+    <a href="{% url 'user:list' %}">Utilisateurs</a>
+    <a href="{% url 'address:list' %}">Adresses</a>
+    <a href="{% url 'teacher:list' %}">Enseignants</a>
+    <a href="{% url 'student:list' %}">Elèves</a>
+    <a href="{% url 'report:report' %}">Raports</a>
+    <a href="{% url 'user:logout' %}">Se déconnecter</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    {% block content %}
+    {% endblock content %}
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="{% static 'js/script.js' %}"></script>
+  {% block confirmation_js %}
+  {% endblock %}
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
