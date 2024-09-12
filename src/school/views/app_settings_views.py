@@ -26,24 +26,27 @@ def setting_details(request, id):
     context = {"appsetting":appsetting}
     return render(request, "settings_app/appsetting_detail.html", context)
 
-
+@check_settings
 def add_setting(request):
-
-    context={"title":"Ajout de setting"}
+    context = {"title": "Ajout de setting"}
+    app_settings_exist = AppSettingsModel.objects.first()
 
     if request.method == "POST":
-        appsetting_form =AppSettingFoms(request.POST)
+        if app_settings_exist:
+            return redirect('school:add')  # Rediriger vers le tableau de bord si les paramètres existent déjà
+
+        appsetting_form = AppSettingFoms(request.POST)
         context["appsetting_form"] = appsetting_form
         if appsetting_form.is_valid():
             appsetting_form.save()
             return redirect('school:add')
         else:
-            return render(request,"settings_app/appsetting_form.html")
+            return render(request, "settings_app/appsetting_form.html", context)
 
     appsetting_form = AppSettingFoms()
     context["appsetting_form"] = appsetting_form
 
-    return render(request,"settings_app/appsetting_form.html",context)
+    return render(request, "settings_app/appsetting_form.html", context)
 
 
 @login_required(login_url='user:login')

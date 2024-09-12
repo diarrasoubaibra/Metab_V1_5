@@ -79,9 +79,15 @@ def userlogin(request):
             # Vérifier si l'utilisateur est un super utilisateur
             if user.is_superuser:
                 # Vérifier si l'application ou l'école n'est pas encore configurée
-                if not SchoolModel.objects.exists() or not AppSettingsModel.objects.exists():
-                    return redirect('school/add_setting/')  # Redirige vers la page de paramétrage
+                if not SchoolModel.objects.exists():
+                    return redirect('school/add_setting/')
+                elif SchoolModel.objects.exists():
+                    return redirect('dashboard:dashboard')
 
+                if not AppSettingsModel.objects.exists():
+                    return redirect('school/add/')  # Redirige vers la page de paramétrage
+                elif SchoolModel.objects.exists():
+                    return redirect('dashboard:dashboard')
             return redirect('dashboard:dashboard')  # Redirige vers le tableau de bord pour les utilisateurs normaux
         else:
             return render(request, 'user/login.html', {'error': 'Identifiant ou mot de passe incorrect.'})

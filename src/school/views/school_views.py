@@ -26,12 +26,14 @@ def details(request, id):
     context = {"school":school}
     return render(request, "school/school_detail.html", context)
 
-
+@check_settings
 def add(request):
     context={"title":"Ajouter Ecole"}
-
+    school_settings_exist = SchoolModel.objects.first()
     if request.method == "POST":
-        print(request.POST)
+        if school_settings_exist:
+            return redirect('user:login')
+        
         school_form =SchoolFoms(request.POST)
         context["school_form"] = school_form
         if school_form.is_valid():

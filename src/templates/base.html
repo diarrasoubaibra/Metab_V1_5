@@ -54,8 +54,8 @@
       <p><strong>École :</strong> {{ school.name }}</p>
     </div>
     <a href="{% url 'dashboard:dashboard' %}">Tableau de bord</a>
-    <a href="{% url 'school:edit_setting' setting.id=1  %}">Paramètres</a>
-    <a href="{% url 'school:edit' school.id=1 %}">Ecoles</a>
+    <a href="{% url 'school:edit_setting' 1  %}">Paramètres</a>
+    <a href="{% url 'school:edit' 1 %}">Ecoles</a>
     <a href="{% url 'user:list_role' %}">Rôles</a>
     <a href="{% url 'user:list' %}">Utilisateurs</a>
     <a href="{% url 'address:list' %}">Adresses</a>

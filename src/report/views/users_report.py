@@ -64,19 +64,18 @@ def generate_excel_report(request, report_type):
         items = TeacherModel.objects.all()
         ws.append(['Nom', 'Prénom', 'Numéro'])
         for item in items:
-            ws.append([item.last_name, item.first_name, item.phone_number])  # Adapte selon ton modèle
+            ws.append([item.last_name, item.first_name, item.phone_number])
 
     elif report_type == 'students':
         ws.title = "Élèves"
         items = StudentModel.objects.all()
         ws.append(['Nom', 'Prénom', 'Matricule'])
         for item in items:
-            ws.append([item.last_name, item.first_name, item.matricule])  # Adapte selon ton modèle
+            ws.append([item.last_name, item.first_name, item.matricule])
 
     else:
         ws.append(['Type de rapport non valide'])
 
-    # Configurer la réponse HTTP
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = f'attachment; filename="{report_type}_report.xlsx"'
     wb.save(response)

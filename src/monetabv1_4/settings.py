@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'dashboard.apps.DashboardConfig',
     'report.apps.ReportConfig',
+    'django_seed',
 ]
 
 MIDDLEWARE = [
@@ -100,27 +101,27 @@ WSGI_APPLICATION = 'monetabv1_4.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#      'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'metab_db',
-#         'USER':'root',
-#         'PASSWORD':'',
-#         'HOST':'localhost',
-#         'PORT':'3306',
-#     }
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'etab_db',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
-        'PORT': '5432',
+     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Metab_bd',
+        'USER':'root',
+        'PASSWORD':'',
+        'HOST':'localhost',
+        'PORT':'3306',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'etab_db',
+#         'USER': 'postgres',
+#         'PASSWORD': 'admin',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
